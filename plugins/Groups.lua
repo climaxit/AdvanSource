@@ -72,10 +72,10 @@ return {
     	"CopyRight all right reserved",
     },
 patterns = {
-	"^[!#/]([Ll]ink) (.*)$",
-	"^[!#/]([Gg]roups)$",
-	"^[!#/]([Cc]hats)$",
-	"^[!#/]([Hh]elp)$",
+--	"^[!#/]([Ll]ink) (.*)$",
+---	"^[!#/]([Gg]roups)$",
+--	"^[!#/]([Cc]hats)$",
+--	"^[!#/]([Hh]elp)$",
 	},
 run = run
 }
