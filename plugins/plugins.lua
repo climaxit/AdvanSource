@@ -27,17 +27,17 @@ local function list_all_plugins(only_enabled)
   local nsum = 0
   for k, v in pairs( plugins_names( )) do
     --  ✔ enabled, ❌ disabled
-    local status = '/Disable➣'
+    local status = '🅾➣'
     nsum = nsum+1
     nact = 0
     -- Check if is enabled
     for k2, v2 in pairs(_config.enabled_plugins) do
       if v == v2..'.lua' then 
-        status = '/Enable➣' 
+        status = '✅➣' 
       end
       nact = nact+1
     end
-    if not only_enabled or status == '/Enable➣' then
+    if not only_enabled or status == '✅➣' then
       -- get the name
       v = string.match (v, "(.*)%.lua")
       text = text..nsum..'.'..status..' '..v..' \n'
@@ -52,17 +52,17 @@ local function list_plugins(only_enabled)
   local nsum = 0
   for k, v in pairs( plugins_names( )) do
     --  ✔ enabled, ❌ disabled
-    local status = '/Disable➣'
+    local status = '🅾➣'
     nsum = nsum+1
     nact = 0
     -- Check if is enabled
     for k2, v2 in pairs(_config.enabled_plugins) do
       if v == v2..'.lua' then 
-        status = '/Enable➣' 
+        status = '✅➣' 
       end
       nact = nact+1
     end
-    if not only_enabled or status == '/Enable➣' then
+    if not only_enabled or status == '✅➣' then
       -- get the name
       v = string.match (v, "(.*)%.lua")
      -- text = text..v..'  '..status..'\n'
@@ -153,7 +153,7 @@ end
 
 local function run(msg, matches)
   -- Show the available plugins 
-  if msg.text:match("^[!/#]plugins$") and is_sudo(msg) then --after changed to moderator mode, set only sudo
+  if msg.text:match("^[!/#]pl$") and is_sudo(msg) then --after changed to moderator mode, set only sudo
     return list_all_plugins()
   end
 
@@ -186,7 +186,7 @@ local function run(msg, matches)
     end
   -- Disable a plugin
   if matches[1] == '-' and is_sudo(msg) then --after changed to moderator mode, set only sudo
-    if matches[2] == 'plugins' then
+    if matches[2] == 'pl' then
     	return 'This plugin can\'t be disabled'
     end
     print("disable: "..matches[2])
@@ -213,12 +213,12 @@ return {
           "!plugins * : reloads all plugins." },
           },
   patterns = {
-    "^[!/#]plugins$",
-    "^[!/#]plugins? (+) ([%w_%.%-]+)$",
-    "^[!/#]plugins? (-) ([%w_%.%-]+)$",
-    "^[!/#]plugins? (+) ([%w_%.%-]+) (chat)",
-    "^[!/#]plugins? (-) ([%w_%.%-]+) (chat)",
-    "^[!/#]plugins? (*)$",
+    "^[!/#]pl$",
+    "^[!/#]pl? (+) ([%w_%.%-]+)$",
+    "^[!/#]pl? (-) ([%w_%.%-]+)$",
+    "^[!/#]pl? (+) ([%w_%.%-]+) (chat)",
+    "^[!/#]pl? (-) ([%w_%.%-]+) (chat)",
+    "^[!/#]pl? (*)$",
     },
   run = run,
   moderated = true, -- set to moderator mode
