@@ -583,7 +583,9 @@ end
 	end
   local settings = data[tostring(target)]['settings']
    local text = "SuperGroup settings for ["..msg.to.print_name.."]:\n\n[🔐] Default locks :\nLock links : "..settings.lock_link.."\nLock flood : "..settings.flood.."\nLock spam : "..settings.lock_spam.."\nLock Arabic : "..settings.lock_arabic.."\nLock Member : "..settings.lock_member.."\nLock RTL : "..settings.lock_rtl.."\nLock Tgservice : "..settings.lock_tgservice.."\nLock sticker : "..settings.lock_sticker.."\n\n[🔏] other locks :\nLock media : "..settings.lock_media.."\nLock fwd : "..settings.lock_fwd.."\nLock reply : "..settings.lock_reply.."\nLock bots : "..settings.lock_bots.."\nLock share : "..settings.lock_share.."\nLock tag : "..settings.lock_tag.."\nLock number : "..settings.lock_number.."\nLock poker : "..settings.lock_poker.."\nLock audio : "..settings.lock_audio.."\nLock photo : "..settings.lock_photo.."\nLock video : "..settings.lock_video.."\nLock documents: "..settings.lock_documents.."\nLock text : "..settings.lock_text.."\nLock all : "..settings.lock_all.."\nLock gifs : "..settings.lock_gifs.."\nLock inline: "..settings.lock_inline.."\nLock cmd : "..settings.lock_cmd.."\n\n[🔧] OTHER:\n[👥] Public : "..settings.public.."\n[📛] Strict settings : "..settings.strict.."\n[👀]Flood sensitivity : "..NUM_MSG_MAX.."|20"
-  return text
+  local text = string.gsub(text, 'yes', '🔒')
+  local text = string.gsub(text, 'no', '🔓')
+	return text
 end
 
 --Show supergroup settings all; function
